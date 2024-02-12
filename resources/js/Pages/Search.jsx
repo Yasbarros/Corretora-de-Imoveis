@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import Layout from '@/Layouts/Layout'
 import Card from '@/Components/Card'
 import bannerImg from '/public/img/banner.jpg'
+import { Link } from '@inertiajs/react'
 
-const Search = () => {
+const Search = ({properties,search}) => {
   const params = new URLSearchParams(window.location.search);
 
-  const [search, setSearch] = useState(params.get('q'))
   const [modal, setModal] = useState(false)
 
   console.log(modal)
@@ -17,6 +17,7 @@ const Search = () => {
 
   return (
     <Layout>
+
       {modal && <div className="bg-black bg-opacity-70 flex items-center justify-center w-full h-full fixed z-50 top-0 left-0">
         <form onSubmit={() => handleSubmit()} className="bg-white p-8 rounded-md flex flex-col">
           <div className="flex justify-between mb-4">
@@ -100,63 +101,26 @@ const Search = () => {
         </div>
 
         <div className=" flex flex-col gap-4 md:gap-6 md:grid md:grid-cols-3 lg:grid-cols-4">
-                    <Card
-                        img={bannerImg}
-                        title="Lorem Ipsum"
-                        value="50.000"
-                        rooms="2"
-                        bathrooms="1"
-                    />
-                    <Card
-                        img={bannerImg}
-                        title="Lorem Ipsum"
-                        value="50.000"
-                        rooms="2"
-                        bathrooms="1"
-                    />
-                    <Card
-                        img={bannerImg}
-                        title="Lorem Ipsum"
-                        value="50.000"
-                        rooms="2"
-                        bathrooms="1"
-                    />
-                    <Card
-                        img={bannerImg}
-                        title="Lorem Ipsum"
-                        value="50.000"
-                        rooms="2"
-                        bathrooms="1"
-                    />
-                <Card
-                    img={bannerImg}
-                    title="Lorem Ipsum"
-                    value="50.000"
-                    rooms="2"
-                    bathrooms="1"
-                />
-                <Card
-                    img={bannerImg}
-                    title="Lorem Ipsum"
-                    value="50.000"
-                    rooms="2"
-                    bathrooms="1"
-                />
-                <Card
-                    img={bannerImg}
-                    title="Lorem Ipsum"
-                    value="50.000"
-                    rooms="2"
-                    bathrooms="1"
-                />
-                <Card
-                    img={bannerImg}
-                    title="Lorem Ipsum"
-                    value="50.000"
-                    rooms="2"
-                    bathrooms="1"
-                />
-                </div>
+                    
+              {properties && properties.length > 0 ? (
+                  properties.map((property) => (
+                      <Link key={property.id} href={`URL_DA_PAGINA_DA_PROPRIEDADE/${property.id}`}>
+                          <Card
+                              img={property.images[0]}
+                              title={property.title}
+                              value={property.price}
+                              rooms={property.bedrooms}
+                              bathrooms={property.bathrooms}
+                          />
+                      </Link>
+                  ))
+              ) : (
+                  <div>
+                      <h1 className='font-semibold mb-8'>Não encontrado</h1>
+                  </div>
+              )}
+                      
+          </div>
       </div>
 
     </Layout>

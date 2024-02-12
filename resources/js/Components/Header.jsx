@@ -15,11 +15,11 @@ const Header = () => {
                 <Link href="/">
                     Lyks Imóveis
                 </Link>
-                <form className='hidden md:block' onSubmit={handleSubmit}>
-                    <input placeholder="Pesquisar..." className="w-[300px] lg:w-[700px] h-8 rounded-md border-gray-300" type="text" />
+                <form action="/" method="GET" className='hidden md:block' onSubmit={handleSubmit}>
+                    <input id="search" name="search" placeholder="Pesquisar..." className="w-[300px] lg:w-[700px] h-8 rounded-md border-gray-300" type="text" />
                 </form>
                 <div className="flex items-end gap-4">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.63961 0.0695801H28.3291C29.2 0.0695801 29.9844 0.854004 29.9844 1.72481V27.4144C29.9844 28.2852 29.2 29.0696 28.3291 29.0696H2.63961C1.7688 29.0696 0.984375 28.2852 0.984375 27.4144V1.72481C0.984375 0.854004 1.7688 0.0695801 2.63961 0.0695801ZM21.5786 16.353H25.5844L25.7585 12.5214H21.5786V9.69166C21.5786 8.6035 21.796 7.99324 23.1893 7.99324H25.6275L25.7153 4.42223C25.7153 4.42223 24.6272 4.24807 23.0597 4.24807C19.2282 4.24807 17.5297 6.64314 17.5297 9.21237V12.5214H14.7V16.353H17.5297V26.9769H21.5786V16.353Z" fill="black"/>
                     </svg>
                     <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -45,7 +45,7 @@ class ManagePropertyController extends Controller
     public function index() {
         $properties = Property::paginate(8);
 
-        return Inertia::render('Home', [
+                return Inertia::render('Home', [
             'properties' => $properties->map(function($property) {
                 $imagePaths = explode(',', $property->images);
                 $imagePaths = array_map(function ($image) {
@@ -341,5 +341,18 @@ class ManagePropertyController extends Controller
         $property->delete();
 
         return Redirect::route('manageProperty.index');
+    }
+
+    public function search(){
+        $search = request('q');
+
+        if($search){
+            $properties = Property::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }
+
+        return Inertia::render('Search',['properties'=>$properties, 'search' =>$search]);
+
     }
 }

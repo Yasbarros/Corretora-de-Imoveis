@@ -39,6 +39,7 @@ Route::get('/manage/properties/{property}', [ManagePropertyController::class, 's
 Route::delete('/manage/properties/{property}', [ManagePropertyController::class, 'destroy'])->name('manageProperty.destroy');
 Route::get('/manage/properties/{property}/edit', [ManagePropertyController::class, 'edit'])->name('manageProperty.edit');
 Route::put('/manage/properties/{property}', [ManagePropertyController::class, 'update'])->name('manageProperty.update');
+Route::get('/search', [ManagePropertyController::class, 'search'])->name('search');
 
 Route::get('/', [ManagePropertyController::class, 'index'])->name('manageProperty.index');
 Route::get('/properties/{property}', [ManagePropertyController::class, 'show'])->name('manageProperty.show');
